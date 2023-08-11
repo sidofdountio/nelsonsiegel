@@ -1,0 +1,44 @@
+<h1 mat-dialog-title>UPDATE PARAMETER</h1>
+<div mat-dialog-content [formGroup]="parameterForm">
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Beta 0</mat-label>
+            <input matInput formControlName="beta0" >
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Beta 1</mat-label>
+            <input matInput formControlName="beta1">
+        </mat-form-field>
+       
+    </p>
+
+     <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Beta 2</mat-label>
+            <input matInput formControlName="beta2">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Beta 3</mat-label>
+            <input matInput formControlName="beta3">
+        </mat-form-field>
+    </p>
+
+    <p>
+        <mat-form-field appearance="outline">
+            <mat-label>Lambda</mat-label>
+            <input matInput formControlName="lambda">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Mu</mat-label>
+            <input matInput formControlName="mu">
+        </mat-form-field>
+        
+    </p>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+    <button mat-raised-button [disabled]="!parameterForm.valid" cdkFocusInitial color="primary" (click)="updateParameter()">Update parameter</button>
+</div>

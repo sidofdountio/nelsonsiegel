@@ -1,0 +1,29 @@
+table {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.addNelson{
+  position: absolute;
+  right: 0px;  
+  left: 190px;
+  top: 10px;
+  width: 200px;
+}
+
+.solverBtn{
+  position: absolute;
+  right: 0px;  
+  left: 500px;
+  top: 10px;
+  width: 200px;
+}
+
+
+.spinner{
+  position: absolute;
+  transition: all;
+  /* right: 50%; */
+  left: 20rem;
+}
+  

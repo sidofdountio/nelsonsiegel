@@ -1,0 +1,69 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- Position Column -->
+
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="maturity">
+      <th mat-header-cell *matHeaderCellDef> Maturity </th>
+      <td mat-cell *matCellDef="let element"> {{ element.maturity }} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="yield">
+      <th mat-header-cell *matHeaderCellDef> Yield </th>
+      <td mat-cell *matCellDef="let element"> {{ element.yield | number:'1.2-5' }} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="value">
+      <th mat-header-cell *matHeaderCellDef> Value </th>
+      <td mat-cell *matCellDef="let element"> {{ element.value | number:'1.2-5' }} </td>
+    </ng-container>
+
+    <!-- Symbol Column periodFixing -->
+    <ng-container matColumnDef="periodFixing">
+      <th mat-header-cell *matHeaderCellDef> Period fixing </th>
+      <td mat-cell *matCellDef="let element"> {{ element.periodFixing }} </td>
+    </ng-container>
+
+    <!-- Symbol Column periodStart-->
+    <ng-container matColumnDef="periodStart">
+      <th mat-header-cell *matHeaderCellDef> Period start </th>
+      <td mat-cell *matCellDef="let element"> {{ element.periodStart }} </td>
+    </ng-container>
+
+    <!-- Symbol Column periodEnd-->
+    <ng-container matColumnDef="periodEnd">
+      <th mat-header-cell *matHeaderCellDef> Period end </th>
+      <td mat-cell *matCellDef="let element"> {{ element.periodEnd }} </td>
+    </ng-container>
+
+    <!-- Symbol Column periodPayment-->
+    <ng-container matColumnDef="periodPayment">
+      <th mat-header-cell *matHeaderCellDef> Period payment </th>
+      <td mat-cell *matCellDef="let element"> {{ element.periodPayment }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
+<div>
+  <button mat-flat-button color="accent" class="addNelson" (click)="onOpenDialog()">
+    Add
+    <mat-icon>add</mat-icon>
+    <mat-spinner class="spinner" *ngIf="isLoadingAdd$ | async"></mat-spinner>
+  </button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button mat-flat-button color="warn" class="solverBtn" (click)="onCalibrateNelsonSvesson()">
+    <mat-spinner  class="spinner" *ngIf="isLoading$ | async"></mat-spinner>
+    <span *ngIf="isLoading$ | async">Loading...</span>
+    <span *ngIf="!(isLoading$ | async)">Solver</span>
+    <mat-icon>published_with_changes</mat-icon>
+  </button>
+</div>

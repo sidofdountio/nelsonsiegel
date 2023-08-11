@@ -1,0 +1,51 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Beta 0 Column -->
+    <ng-container matColumnDef="beta0">
+      <th mat-header-cell *matHeaderCellDef> Beat 0 </th>
+      <td mat-cell *matCellDef="let element"> {{ element.beta0 | number:'1.2-5' }} </td>
+    </ng-container>
+
+    <!-- Beta1 Column -->
+    <ng-container matColumnDef="beta1">
+        <th mat-header-cell *matHeaderCellDef> Beta 1 </th>
+        <td mat-cell *matCellDef="let element"> {{ element.beta1 | number:'1.2-5' }} </td>
+    </ng-container>
+
+    <!-- Beta2 Column -->
+    <ng-container matColumnDef="beta2">
+        <th mat-header-cell *matHeaderCellDef> Beta 2 </th>
+        <td mat-cell *matCellDef="let element"> {{ element.beta2 | number:'1.2-5' }} </td>
+    </ng-container>
+
+    <!-- Beta3 Column -->
+    <ng-container matColumnDef="beta3">
+        <th mat-header-cell *matHeaderCellDef> Beta 3 </th>
+        <td mat-cell *matCellDef="let element"> {{ element.beta3 | number:'1.2-5' }} </td>
+    </ng-container>
+
+    <!-- lambda Column -->
+    <ng-container matColumnDef="lambda">
+        <th mat-header-cell *matHeaderCellDef> Lambda </th>
+        <td mat-cell *matCellDef="let element"> {{ element.lambda | number:'1.2-5'}} </td>
+    </ng-container>
+
+    <!-- Mu Column -->
+    <ng-container matColumnDef="mu">
+        <th mat-header-cell *matHeaderCellDef> Mu </th>
+        <td mat-cell *matCellDef="let element"> {{ element.mu | number:'1.2-5'}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <div class="">
+    <button mat-flat-button color="primary" (click)="openDialog()">Change parameter<mat-icon>edit</mat-icon> </button>
+    
+  </div>
+  
+  

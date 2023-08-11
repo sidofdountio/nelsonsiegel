@@ -1,0 +1,47 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Nelson Siegel, Sevenson</h1>
+  <mat-grid-list cols="2" rowHeight="350px">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{card.title}}
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div *ngIf="(card.title === 'parameter')">
+            <app-parameter ></app-parameter>
+            
+            <div>
+              <mat-card class="card">
+                <mat-card-content>
+                    <span>Solver :&nbsp;&nbsp;&nbsp;&nbsp;{{ solverValue }}</span>
+                    <span>Miss pricing:&nbsp;&nbsp;&nbsp;&nbsp;{{ missPricingValue }}</span>
+                </mat-card-content>
+            </mat-card>
+            </div>
+          </div>
+
+          <div *ngIf="(card.title === 'curve')">
+            <app-nelson-curve></app-nelson-curve>
+          </div>
+
+          <div *ngIf="(card.title === 'nelson siegel')">
+            
+            <app-nelsonsiegel (solvers)="solverValue=$event" (missPricing)="missPricingValue=$event"></app-nelsonsiegel>
+          </div>
+          
+      
+        </mat-card-content>
+        
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
